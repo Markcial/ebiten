@@ -84,8 +84,12 @@ func (i *Image) vertices(sx0, sy0, sx1, sy1 int, geo *affine.GeoM, color *affine
 	vs[3] = v0
 	vs[4] = u1
 	vs[5] = v1
-	copy(vs[6:22], cBody)
-	copy(vs[22:26], cTranslate)
+	for i, v := range cBody {
+		vs[6+i] = v
+	}
+	for i, v := range cTranslate {
+		vs[22+i] = v
+	}
 
 	// and the same for the other three coordinates
 	x, y = geo.Apply32(x1, y0)
@@ -95,8 +99,12 @@ func (i *Image) vertices(sx0, sy0, sx1, sy1 int, geo *affine.GeoM, color *affine
 	vs[29] = v0
 	vs[30] = u0
 	vs[31] = v1
-	copy(vs[32:48], cBody)
-	copy(vs[48:52], cTranslate)
+	for i, v := range cBody {
+		vs[32+i] = v
+	}
+	for i, v := range cTranslate {
+		vs[48+i] = v
+	}
 
 	x, y = geo.Apply32(x0, y1)
 	vs[52] = x
@@ -105,8 +113,12 @@ func (i *Image) vertices(sx0, sy0, sx1, sy1 int, geo *affine.GeoM, color *affine
 	vs[55] = v1
 	vs[56] = u1
 	vs[57] = v0
-	copy(vs[58:74], cBody)
-	copy(vs[74:78], cTranslate)
+	for i, v := range cBody {
+		vs[58+i] = v
+	}
+	for i, v := range cTranslate {
+		vs[74+i] = v
+	}
 
 	x, y = geo.Apply32(x1, y1)
 	vs[78] = x
@@ -115,8 +127,12 @@ func (i *Image) vertices(sx0, sy0, sx1, sy1 int, geo *affine.GeoM, color *affine
 	vs[81] = v1
 	vs[82] = u0
 	vs[83] = v0
-	copy(vs[84:100], cBody)
-	copy(vs[100:104], cTranslate)
+	for i, v := range cBody {
+		vs[84+i] = v
+	}
+	for i, v := range cTranslate {
+		vs[100+i] = v
+	}
 
 	return vs
 }
